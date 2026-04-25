@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — Lumière Event Artisans</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .activity-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.2rem;
+      border-radius: 12px;
+      margin-bottom: 0.8rem;
+      background: var(--cream);
+      transition: background 0.2s;
+    }
+
+    .activity-item:hover {
+      background: var(--blush);
+    }
+
+    .activity-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--blush);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .activity-text strong {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--charcoal);
+      font-weight: 500;
+    }
+
+    .activity-text span {
+      font-size: 0.78rem;
+      color: var(--warm-gray);
+    }
+
+    .activity-time {
+      margin-left: auto;
+      font-size: 0.75rem;
+      color: var(--warm-gray);
+      white-space: nowrap;
+    }
+
+    .quick-action {
+      background: var(--white);
+      border-radius: var(--border-radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+
+    .quick-action:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .qa-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      background: var(--blush);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .qa-text strong {
+      display: block;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--charcoal);
+    }
+
+    .qa-text span {
+      font-size: 0.8rem;
+      color: var(--warm-gray);
+    }
+
+    .progress-bar {
+      height: 6px;
+      background: var(--light-gray);
+      border-radius: 3px;
+      margin-top: 0.5rem;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--rose), var(--gold));
+      border-radius: 3px;
+      transition: width 1s ease;
+    }
+
+    .section-divider {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+      padding: 0.6rem 1rem;
+      margin: 1rem 0 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div class="dashboard-layout">
+  <aside class="sidebar">
+    <div class="sidebar-profile">
+      <div class="profile-avatar">E</div>
+      <strong>Eleanor Harrington</strong>
+      <span>eleanor@example.com</span>
+    </div>
+
+    <div class="section-divider">Main Menu</div>
+    <nav class="sidebar-nav">
+      <a href="#overview" class="active">
+        <span>🏠</span> Overview
+      </a>
+      <a href="#inquiries">
+        <span>📋</span> My Inquiries
+      </a>
+      <a href="#events">
+        <span>🎉</span> Browse Events
+      </a>
+      <a href="#profile">
+        <span>👤</span> My Profile
+      </a>
+    </nav>
+
+    <div class="section-divider">Support</div>
+    <nav class="sidebar-nav">
+      <a href="contact.html">
+        <span>💬</span> New Inquiry
+      </a>
+      <a href="#">
+        <span>❓</span> Help Centre
+      </a>
+      <a href="#">
+        <span>🔔</span> Notifications
+        <span style="background: var(--rose); color: white; font-size: 0.65rem; padding: 0.1rem 0.45rem; border-radius: 10px; margin-left: auto;">3</span>
+      </a>
+    </nav>
+
+    <div style="position: absolute; bottom: 2rem; left: 1.5rem; right: 1.5rem;">
+      <a href="index.html" style="display: flex; align-items: center; gap: 0.7rem; color: rgba(255,255,255,0.4); font-size: 0.85rem; padding: 0.8rem 1rem; border-radius: 10px; transition: all 0.2s;">
+        <span>←</span> Back to Website
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN DASHBOARD -->
+  <main class="dashboard-main">
+
+    <!-- HEADER -->
+    <div class="dash-header">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h2>Good afternoon, Eleanor 👋</h2>
+          <p>Here's an overview of your event inquiries and activity.</p>
+        </div>
+        <a href="contact.html" class="btn btn-primary">+ New Inquiry</a>
+      </div>
+    </div>
+
+    <!-- STAT CARDS -->
+    <div class="dash-stats fade-in">
+      <div class="dash-stat-card">
+        <div class="stat-icon">📋</div>
+        <div class="stat-value">5</div>
+        <div class="stat-key">Total Inquiries</div>
+      </div>
+      <div class="dash-stat-card">
+        <div class="stat-icon">✅</div>
+        <div class="stat-value">2</div>
+        <div class="stat-key">Confirmed Events</div>
+      </div>
+      <div class="dash-stat-card">
+        <div class="stat-icon">⏳</div>
+        <div class="stat-value">2</div>
+        <div class="stat-key">Pending Review</div>
+      </div>
+      <div class="dash-stat-card">
+        <div class="stat-icon">🎊</div>
+        <div class="stat-value">1</div>
+        <div class="stat-key">Completed</div>
+      </div>
+    </div>
+
+    <!-- GRID: TABLE + SIDEBAR -->
+    <div style="display: grid; grid-template-columns: 1fr 340px; gap: 2rem; align-items: start;" class="fade-in">
+
+      <!-- INQUIRIES TABLE -->
+      <div id="inquiries">
+        <div class="inquiries-table">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <h4>Inquiry History</h4>
+            <a href="contact.html" style="font-size: 0.82rem; color: var(--rose);">+ New Inquiry</a>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Event Type</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="inquiriesTableBody">
+              <!-- Rendered by JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- UPCOMING EVENTS PREVIEW -->
+        <div style="background: var(--white); border-radius: var(--border-radius); padding: 2rem; box-shadow: var(--shadow-soft); margin-top: 1.5rem;" id="events">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 1.5rem;">Browse Events</h4>
+            <a href="events.html" style="font-size: 0.82rem; color: var(--rose);">See all →</a>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div style="border-radius: 12px; overflow: hidden; cursor: pointer;" onclick="window.location.href='event-details.html?id=1'">
+              <div style="height: 120px; overflow: hidden;">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=400&q=70" alt="Wedding" style="width:100%; height:100%; object-fit:cover; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+              </div>
+              <div style="padding: 0.8rem;">
+                <span style="font-size: 0.7rem; color: var(--rose); text-transform: uppercase; letter-spacing: 0.1em;">Wedding</span>
+                <p style="font-size: 0.88rem; color: var(--charcoal); font-weight: 500; margin-top: 0.2rem;">The Laurent Garden Wedding</p>
+              </div>
+            </div>
+            <div style="border-radius: 12px; overflow: hidden; cursor: pointer;" onclick="window.location.href='event-details.html?id=2'">
+              <div style="height: 120px; overflow: hidden;">
+                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&q=70" alt="Corporate" style="width:100%; height:100%; object-fit:cover; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+              </div>
+              <div style="padding: 0.8rem;">
+                <span style="font-size: 0.7rem; color: var(--rose); text-transform: uppercase; letter-spacing: 0.1em;">Corporate</span>
+                <p style="font-size: 0.88rem; color: var(--charcoal); font-weight: 500; margin-top: 0.2rem;">Nexus Annual Corporate Gala</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDEBAR WIDGETS -->
+      <div>
+        <!-- PROFILE CARD -->
+        <div style="background: var(--white); border-radius: var(--border-radius); padding: 2rem; box-shadow: var(--shadow-soft); margin-bottom: 1.5rem;" id="profile">
+          <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--light-gray);">My Profile</h4>
+          <div style="text-align: center; margin-bottom: 1.5rem;">
+            <div style="width: 72px; height: 72px; background: var(--blush); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; color: var(--rose);">E</div>
+            <strong style="display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem;">Eleanor Harrington</strong>
+            <span style="font-size: 0.82rem; color: var(--warm-gray);">Premium Client</span>
+          </div>
+          <div style="font-size: 0.85rem; color: var(--warm-gray); line-height: 2;">
+            <div style="display: flex; justify-content: space-between;">
+              <span>Email</span>
+              <span style="color: var(--charcoal);">eleanor@example.com</span>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span>Phone</span>
+              <span style="color: var(--charcoal);">+44 7700 900123</span>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span>Member Since</span>
+              <span style="color: var(--charcoal);">March 2025</span>
+            </div>
+          </div>
+          <a href="contact.html" class="btn btn-outline" style="width: 100%; justify-content: center; margin-top: 1.5rem; padding: 0.7rem;">Edit Profile</a>
+        </div>
+
+        <!-- ACTIVITY FEED -->
+        <div style="background: var(--white); border-radius: var(--border-radius); padding: 2rem; box-shadow: var(--shadow-soft); margin-bottom: 1.5rem;">
+          <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; margin-bottom: 1.5rem;">Recent Activity</h4>
+
+          <div class="activity-item">
+            <div class="activity-icon">✅</div>
+            <div class="activity-text">
+              <strong>Inquiry Confirmed</strong>
+              <span>Priya's Wedding — April 12</span>
+            </div>
+            <span class="activity-time">2d ago</span>
+          </div>
+
+          <div class="activity-item">
+            <div class="activity-icon">💬</div>
+            <div class="activity-text">
+              <strong>Message from Team</strong>
+              <span>Regarding Vikram's event</span>
+            </div>
+            <span class="activity-time">5d ago</span>
+          </div>
+
+          <div class="activity-item">
+            <div class="activity-icon">📋</div>
+            <div class="activity-text">
+              <strong>New Inquiry Submitted</strong>
+              <span>Birthday Celebration — May 5</span>
+            </div>
+            <span class="activity-time">1w ago</span>
+          </div>
+
+          <div class="activity-item">
+            <div class="activity-icon">🎊</div>
+            <div class="activity-text">
+              <strong>Event Completed</strong>
+              <span>Rohan's Corporate Gala</span>
+            </div>
+            <span class="activity-time">3w ago</span>
+          </div>
+        </div>
+
+        <!-- QUICK ACTIONS -->
+        <div style="background: var(--white); border-radius: var(--border-radius); padding: 2rem; box-shadow: var(--shadow-soft);">
+          <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; margin-bottom: 1.5rem;">Quick Actions</h4>
+          <a href="contact.html" class="quick-action" style="margin-bottom: 0.8rem; display: flex;">
+            <div class="qa-icon">💬</div>
+            <div class="qa-text">
+              <strong>New Inquiry</strong>
+              <span>Start planning an event</span>
+            </div>
+          </a>
+          <a href="events.html" class="quick-action" style="margin-bottom: 0.8rem; display: flex;">
+            <div class="qa-icon">🎉</div>
+            <div class="qa-text">
+              <strong>Browse Events</strong>
+              <span>Explore our portfolio</span>
+            </div>
+          </a>
+          <a href="index.html" class="quick-action" style="display: flex;">
+            <div class="qa-icon">🏠</div>
+            <div class="qa-text">
+              <strong>Visit Homepage</strong>
+              <span>Back to main site</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="script.js"></script>
+<script>
+  // Dashboard specific: keep navbar hidden, handle sidebar nav
+  document.addEventListener('DOMContentLoaded', () => {
+    const sidebarLinks = document.querySelectorAll('.sidebar-nav a');
+    sidebarLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          e.preventDefault();
+          sidebarLinks.forEach(l => l.classList.remove('active'));
+          this.classList.add('active');
+          const target = document.querySelector(href);
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Animate progress bars
+    setTimeout(() => {
+      document.querySelectorAll('.progress-fill').forEach(bar => {
+        const width = bar.dataset.width || '0%';
+        bar.style.width = width;
+      });
+    }, 300);
+  });
+</script>
+</body>
+</html>

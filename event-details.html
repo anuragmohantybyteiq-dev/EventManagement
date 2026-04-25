@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Details — Lumière Event Artisans</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.82rem;
+      color: var(--warm-gray);
+      margin-bottom: 2rem;
+    }
+    .breadcrumb a { color: var(--rose); }
+    .breadcrumb span { color: var(--light-gray); }
+
+    .related-events {
+      padding: 6rem 0;
+      background: var(--warm-white);
+    }
+
+    .inquiry-card {
+      background: var(--charcoal);
+      border-radius: var(--border-radius);
+      padding: 2.5rem;
+      text-align: center;
+    }
+
+    .inquiry-card h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      color: var(--white);
+      margin-bottom: 0.8rem;
+    }
+
+    .inquiry-card p {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .service-item span:last-child {
+      font-size: 0.92rem;
+    }
+
+    .event-detail-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" aria-label="Close menu">✕</button>
+  <a href="index.html">Home</a>
+  <a href="events.html">Events</a>
+  <a href="index.html#services">Services</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="btn btn-rose" style="margin-top:1rem;">Plan Your Event</a>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar scrolled" id="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-main">Lumière</span>
+      <span class="logo-sub">Event Artisans</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="dashboard.html" class="btn btn-outline" style="padding: 0.6rem 1.5rem;">Dashboard</a>
+      <a href="contact.html" class="btn btn-primary">Plan Your Event</a>
+    </div>
+    <div class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO BANNER -->
+<div class="event-detail-hero" style="margin-top: 80px;">
+  <img id="detailHeroImg" src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1600&q=80" alt="Event Banner">
+  <div class="event-detail-hero-text">
+    <div class="container">
+      <span class="event-badge-detail" id="detailHeroBadge">Wedding</span>
+      <h1 id="detailHeroTitle">The Laurent Garden Wedding</h1>
+    </div>
+  </div>
+</div>
+
+<!-- EVENT DETAIL CONTENT -->
+<section class="event-detail-content">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <a href="events.html">Events</a>
+      <span>›</span>
+      <span id="breadcrumbTitle">Event Details</span>
+    </div>
+
+    <div class="event-detail-grid">
+      <!-- MAIN CONTENT -->
+      <div class="event-description">
+        <span class="section-label">The Story</span>
+        <h3 id="detailTitle">The Laurent Garden Wedding</h3>
+        <p id="detailDescription" style="margin-top: 1rem;">
+          Loading event details...
+        </p>
+
+        <!-- GALLERY -->
+        <div class="event-gallery">
+          <h4>Event Gallery</h4>
+          <div class="gallery-grid" id="detailGallery">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="event-sidebar">
+        <!-- SERVICES CARD -->
+        <div class="services-card">
+          <h4>Services Included</h4>
+          <div id="detailServices">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- INQUIRY CARD -->
+        <div class="inquiry-card">
+          <h4>Love What You See?</h4>
+          <p>Let's bring your unique vision to life. Share your ideas with our team and we'll craft something extraordinary.</p>
+          <a href="contact.html" class="btn btn-rose" style="width: 100%; justify-content: center;">Contact Us →</a>
+        </div>
+
+        <!-- QUICK STATS -->
+        <div class="services-card" style="margin-top: 1.5rem;">
+          <h4>At a Glance</h4>
+          <div class="service-item">
+            <span class="service-icon">📍</span>
+            <span>London Estate, UK</span>
+          </div>
+          <div class="service-item">
+            <span class="service-icon">👥</span>
+            <span>120–400 Guests</span>
+          </div>
+          <div class="service-item">
+            <span class="service-icon">⏱️</span>
+            <span>Full Day Event</span>
+          </div>
+          <div class="service-item">
+            <span class="service-icon">⭐</span>
+            <span>5.0 Client Rating</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RELATED EVENTS -->
+<section class="related-events">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div>
+        <span class="section-label">See More</span>
+        <h2 class="section-title">Related Events</h2>
+      </div>
+      <a href="events.html" class="btn btn-outline">View All →</a>
+    </div>
+    <div class="events-grid" id="relatedEvents">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">
+          <span class="logo-main">Lumière</span>
+          <span class="logo-sub">Event Artisans</span>
+        </div>
+        <p class="footer-desc">We are a boutique event planning studio committed to crafting extraordinary moments.</p>
+        <div class="footer-social">
+          <div class="social-btn">📸</div>
+          <div class="social-btn">💼</div>
+          <div class="social-btn">🐦</div>
+          <div class="social-btn">📌</div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#">Weddings</a></li>
+          <li><a href="#">Corporate Events</a></li>
+          <li><a href="#">Birthday Celebrations</a></li>
+          <li><a href="#">Private Dinners</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Newsletter</h5>
+        <p style="color: rgba(255,255,255,0.4); font-size: 0.85rem; margin-bottom: 1.2rem; line-height: 1.7;">Subscribe for event inspiration and exclusive offers.</p>
+        <div class="newsletter-input-wrap">
+          <input type="email" placeholder="Your email">
+          <button type="button" aria-label="Subscribe">→</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Lumière Event Artisans. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  // Update breadcrumb title from rendered content
+  document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+      const title = document.getElementById('detailHeroTitle');
+      const bc = document.getElementById('breadcrumbTitle');
+      if (title && bc) bc.textContent = title.textContent;
+    }, 100);
+  });
+</script>
+</body>
+</html>

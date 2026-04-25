@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events — Lumière Event Artisans</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" aria-label="Close menu">✕</button>
+  <a href="index.html">Home</a>
+  <a href="events.html">Events</a>
+  <a href="index.html#services">Services</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="btn btn-rose" style="margin-top:1rem;">Plan Your Event</a>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-main">Lumière</span>
+      <span class="logo-sub">Event Artisans</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="dashboard.html" class="btn btn-outline" style="padding: 0.6rem 1.5rem;">Dashboard</a>
+      <a href="contact.html" class="btn btn-primary">Plan Your Event</a>
+    </div>
+    <div class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <span class="section-label">Our Portfolio</span>
+    <h1>Event Showcase</h1>
+    <p>Browse our curated collection of events — each one a testament to creative vision and meticulous planning.</p>
+  </div>
+</section>
+
+<!-- EVENTS SECTION -->
+<section class="events-section">
+  <div class="container">
+
+    <!-- FILTER BUTTONS -->
+    <div class="events-filter fade-in">
+      <button class="filter-btn active" data-filter="All">All Events</button>
+      <button class="filter-btn" data-filter="Wedding">Weddings</button>
+      <button class="filter-btn" data-filter="Corporate">Corporate</button>
+      <button class="filter-btn" data-filter="Birthday">Birthdays</button>
+      <button class="filter-btn" data-filter="Private">Private</button>
+    </div>
+
+    <!-- EVENTS GRID -->
+    <div class="events-all-grid" id="allEvents">
+      <!-- Rendered by script.js -->
+    </div>
+
+  </div>
+</section>
+
+<!-- TESTIMONIALS STRIP -->
+<section class="testimonials" style="padding: 6rem 0;">
+  <div class="container">
+    <div class="text-center fade-in">
+      <span class="section-label">Client Stories</span>
+      <h2 class="section-title">Heard From Our Clients</h2>
+      <p class="section-subtitle">The greatest measure of our work is the joy we see on our clients' faces.</p>
+    </div>
+    <div class="testimonials-slider">
+      <div class="testimonials-track" id="testimonialsTrack">
+        <!-- Rendered by JS -->
+      </div>
+      <div class="slider-controls">
+        <button class="slider-btn" id="sliderPrev" aria-label="Previous">←</button>
+        <div class="slider-dots" id="sliderDots"></div>
+        <button class="slider-btn" id="sliderNext" aria-label="Next">→</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background: var(--charcoal); padding: 5rem 0; text-align: center;">
+  <div class="container">
+    <span class="section-label" style="color: var(--gold);">Let's Create Together</span>
+    <h2 style="color: var(--white); margin-bottom: 1.2rem; font-size: clamp(1.8rem, 3.5vw, 2.8rem);">Have an Event in Mind?</h2>
+    <p style="color: rgba(255,255,255,0.5); max-width: 480px; margin: 0 auto 2.5rem; font-size: 1rem;">Share your vision with us and we'll craft something truly extraordinary together.</p>
+    <a href="contact.html" class="btn btn-rose">Send Us an Inquiry →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">
+          <span class="logo-main">Lumière</span>
+          <span class="logo-sub">Event Artisans</span>
+        </div>
+        <p class="footer-desc">We are a boutique event planning studio committed to crafting extraordinary moments.</p>
+        <div class="footer-social">
+          <div class="social-btn">📸</div>
+          <div class="social-btn">💼</div>
+          <div class="social-btn">🐦</div>
+          <div class="social-btn">📌</div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#">Weddings</a></li>
+          <li><a href="#">Corporate Events</a></li>
+          <li><a href="#">Birthday Celebrations</a></li>
+          <li><a href="#">Private Dinners</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Newsletter</h5>
+        <p style="color: rgba(255,255,255,0.4); font-size: 0.85rem; margin-bottom: 1.2rem; line-height: 1.7;">Subscribe for event inspiration and exclusive offers.</p>
+        <div class="newsletter-input-wrap">
+          <input type="email" placeholder="Your email">
+          <button type="button" aria-label="Subscribe">→</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Lumière Event Artisans. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
