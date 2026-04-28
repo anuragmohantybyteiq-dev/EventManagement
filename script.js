@@ -222,19 +222,37 @@ function initScrollAnimations() {
 }
 
 // ===========================
-// TESTIMONIAL SLIDER
+// TESTIMONIAL GRID + FEATURED
 // ===========================
 function initTestimonialSlider() {
-  const track = document.getElementById('testimonialsTrack');
-  const dotsContainer = document.getElementById('sliderDots');
-  const prevBtn = document.getElementById('sliderPrev');
-  const nextBtn = document.getElementById('sliderNext');
+  const featuredContainer = document.getElementById('testimonialFeatured');
+  const gridContainer = document.getElementById('testimonialsGrid');
 
-  if (!track) return;
+  if (!featuredContainer || !gridContainer || reviewsData.length === 0) return;
 
-  // Render testimonials
-  track.innerHTML = reviewsData.map(review => `
-    <div class="testimonial-card fade-in">
+  // Render the featured quote (first item)
+  const featuredReview = reviewsData[0];
+  featuredContainer.innerHTML = `
+    <div class="featured-content">
+      <div class="featured-stars">
+        ${'<span class="star">★</span>'.repeat(featuredReview.rating)}
+      </div>
+      <p class="featured-quote">"${featuredReview.text}"</p>
+      <div class="featured-author">
+        <div class="featured-avatar">${featuredReview.initial}</div>
+        <div class="featured-author-info">
+          <strong>${featuredReview.name}</strong>
+          <span>${featuredReview.role}</span>
+        </div>
+      </div>
+    </div>
+    <div class="featured-badge">Featured Client</div>
+  `;
+
+  // Render the remaining reviews in the grid
+  const gridReviews = reviewsData.slice(1);
+  gridContainer.innerHTML = gridReviews.map((review, index) => `
+    <div class="testimonial-card fade-in fade-in-delay-${(index % 3) + 1}">
       <div class="testimonial-stars">
         ${'<span class="star">★</span>'.repeat(review.rating)}
       </div>
@@ -248,60 +266,6 @@ function initTestimonialSlider() {
       </div>
     </div>
   `).join('');
-
-  let currentIndex = 0;
-  const cards = track.querySelectorAll('.testimonial-card');
-  
-  function getVisibleCards() {
-    if (window.innerWidth <= 768) return 1;
-    if (window.innerWidth <= 1024) return 2;
-    return 3;
-  }
-
-  function getMaxIndex() {
-    const visible = getVisibleCards();
-    return Math.max(0, Math.ceil(reviewsData.length / visible) - 1);
-  }
-
-  // Render dots
-  if (dotsContainer) {
-    for (let i = 0; i <= getMaxIndex(); i++) {
-      const dot = document.createElement('span');
-      dot.className = 'dot' + (i === 0 ? ' active' : '');
-      dot.addEventListener('click', () => goToSlide(i));
-      dotsContainer.appendChild(dot);
-    }
-  }
-
-  function goToSlide(index) {
-    const visible = getVisibleCards();
-    const maxIndex = getMaxIndex();
-    currentIndex = Math.max(0, Math.min(index, maxIndex));
-    
-    const cardWidth = cards[0].offsetWidth + 32; // card width + gap
-    
-    // Calculate how many cards to shift.
-    // If it's the last page, we shift just enough to show the very last card, preserving the full row (no gaps!)
-    let shiftAmount = currentIndex * visible;
-    const maxPossibleShift = Math.max(0, reviewsData.length - visible);
-    if (shiftAmount > maxPossibleShift) {
-        shiftAmount = maxPossibleShift;
-    }
-    
-    track.style.transform = `translateX(-${shiftAmount * cardWidth}px)`;
-    document.querySelectorAll('.dot').forEach((dot, i) => {
-      dot.classList.toggle('active', i === currentIndex);
-    });
-  }
-
-  if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
-  if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
-
-  // Auto-play
-  setInterval(() => {
-    const maxIndex = getMaxIndex();
-    goToSlide(currentIndex < maxIndex ? currentIndex + 1 : 0);
-  }, 5000);
 }
 
 // ===========================
