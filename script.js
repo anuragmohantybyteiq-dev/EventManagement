@@ -251,17 +251,21 @@ function initTestimonialSlider() {
 
   let currentIndex = 0;
   const cards = track.querySelectorAll('.testimonial-card');
-  const totalSlides = Math.ceil(cards.length / getVisibleCards());
-
+  
   function getVisibleCards() {
     if (window.innerWidth <= 768) return 1;
     if (window.innerWidth <= 1024) return 2;
     return 3;
   }
 
+  function getMaxIndex() {
+    const visible = getVisibleCards();
+    return Math.max(0, Math.ceil(reviewsData.length / visible) - 1);
+  }
+
   // Render dots
   if (dotsContainer) {
-    for (let i = 0; i < Math.ceil(reviewsData.length / getVisibleCards()); i++) {
+    for (let i = 0; i <= getMaxIndex(); i++) {
       const dot = document.createElement('span');
       dot.className = 'dot' + (i === 0 ? ' active' : '');
       dot.addEventListener('click', () => goToSlide(i));
@@ -271,10 +275,20 @@ function initTestimonialSlider() {
 
   function goToSlide(index) {
     const visible = getVisibleCards();
-    const maxIndex = Math.ceil(reviewsData.length / visible) - 1;
+    const maxIndex = getMaxIndex();
     currentIndex = Math.max(0, Math.min(index, maxIndex));
-    const cardWidth = cards[0].offsetWidth + 32;
-    track.style.transform = `translateX(-${currentIndex * cardWidth * visible}px)`;
+    
+    const cardWidth = cards[0].offsetWidth + 32; // card width + gap
+    
+    // Calculate how many cards to shift.
+    // If it's the last page, we shift just enough to show the very last card, preserving the full row (no gaps!)
+    let shiftAmount = currentIndex * visible;
+    const maxPossibleShift = Math.max(0, reviewsData.length - visible);
+    if (shiftAmount > maxPossibleShift) {
+        shiftAmount = maxPossibleShift;
+    }
+    
+    track.style.transform = `translateX(-${shiftAmount * cardWidth}px)`;
     document.querySelectorAll('.dot').forEach((dot, i) => {
       dot.classList.toggle('active', i === currentIndex);
     });
@@ -285,7 +299,7 @@ function initTestimonialSlider() {
 
   // Auto-play
   setInterval(() => {
-    const maxIndex = Math.ceil(reviewsData.length / getVisibleCards()) - 1;
+    const maxIndex = getMaxIndex();
     goToSlide(currentIndex < maxIndex ? currentIndex + 1 : 0);
   }, 5000);
 }
