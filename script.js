@@ -168,6 +168,7 @@ function initNavbar() {
   if (!navbar) return;
 
   window.addEventListener('scroll', () => {
+    if (navbar.classList.contains('always-scrolled')) return;
     if (window.scrollY > 60) {
       navbar.classList.add('scrolled');
     } else {
