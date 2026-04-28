@@ -451,18 +451,45 @@ function initContactForm() {
     btn.textContent = 'Sending...';
     btn.disabled = true;
 
-    setTimeout(() => {
-      btn.textContent = original;
-      btn.disabled = false;
+    // Use Web3Forms to send the email without templates
+    const formData = new FormData(form);
+    const object = Object.fromEntries(formData);
+    
+    // ADDED: Include access key and default subject programmatically
+    object.access_key = "e5eadad5-92a3-4f74-839f-75dbbb4a4c7f";
+    object.subject = "New Contact Form Submission";
+    
+    const json = JSON.stringify(object);
 
-      const successMsg = document.getElementById('successMessage');
-      if (successMsg) {
-        successMsg.classList.add('show');
-        setTimeout(() => successMsg.classList.remove('show'), 5000);
-      }
-
-      form.reset();
-    }, 1400);
+    fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: json
+    })
+    .then(async (response) => {
+        let jsonRes = await response.json();
+        if (response.status === 200) {
+            const successMsg = document.getElementById('successMessage');
+            if (successMsg) {
+                successMsg.classList.add('show');
+                setTimeout(() => successMsg.classList.remove('show'), 5000);
+            }
+            form.reset();
+        } else {
+            alert('Failed to send message: ' + jsonRes.message);
+        }
+    })
+    .catch(error => {
+        console.error('Web3Forms Error:', error);
+        alert('Something went wrong while sending the message. Please try again.');
+    })
+    .finally(() => {
+        btn.textContent = original;
+        btn.disabled = false;
+    });
   });
 }
 
@@ -527,6 +554,32 @@ function initCounters() {
 }
 
 // ===========================
+// SECURITY: DISABLE INSPECT
+// ===========================
+function initDisableInspect() {
+  // Disable right-click menu
+  document.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+  });
+
+  // Disable keyboard shortcuts for DevTools and Source Code
+  document.addEventListener('keydown', (e) => {
+    // F12 key
+    if (e.key === 'F12') {
+      e.preventDefault();
+    }
+    // Ctrl + Shift + I (Inspect) or Ctrl + Shift + J (Console) or Ctrl + Shift + C (Element Inspector)
+    if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) {
+      e.preventDefault();
+    }
+    // Ctrl + U (View Source)
+    if (e.ctrlKey && (e.key === 'U' || e.key === 'u')) {
+      e.preventDefault();
+    }
+  });
+}
+
+// ===========================
 // INIT
 // ===========================
 document.addEventListener('DOMContentLoaded', () => {
@@ -539,4 +592,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initDashboard();
   initCounters();
+  initDisableInspect();
 });
